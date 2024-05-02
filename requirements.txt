@@ -1,0 +1,5 @@
+streamlit
+st_pages
+matplotlib>=3.5.0
+pandas
+numpy
