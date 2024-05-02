@@ -15,7 +15,7 @@ variable_dict = {
 value = ['Virgin America', 'United', 'Delta', 'US Airways', 'American', 'Southwest']
 
 genre = st.radio(
-    "Select US Airlines",
+    "Select Any US Airlines",
     ['Virgin America', 'United', 'Delta', 'US Airways', 'American', 'Southwest'],
     index=None,
 )
@@ -46,28 +46,29 @@ if option is not None:
     reasons_on_specific_date = [reason_for_missing if x is np.NAN else x for x in reasons_on_specific_date]
 
 # Sample data (replace with your actual data)
-data_list = reasons_on_specific_date
+if genre is not None:
+    data_list = reasons_on_specific_date
 
-value_counts = pd.Series(reasons_on_specific_date).value_counts().sort_values(ascending=False)
-print(value_counts)
-# Extract labels and sizes for the pie chart
-labels = value_counts.index.to_numpy()
-sizes = value_counts.to_numpy()
+    value_counts = pd.Series(reasons_on_specific_date).value_counts().sort_values(ascending=False)
+    print(value_counts)
+    # Extract labels and sizes for the pie chart
+    labels = value_counts.index.to_numpy()
+    sizes = value_counts.to_numpy()
 
-# Ensure explode has the same length as sizes
-explode_length = len(value_counts)
-explode = [0.1] + [0 for _ in range(explode_length - 1)]
+    # Ensure explode has the same length as sizes
+    explode_length = len(value_counts)
+    explode = [0.1] + [0 for _ in range(explode_length - 1)]
 
-# Create the pie chart
-fig1, ax1 = plt.subplots()
-ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90, **{'textprops': {'fontsize': 5}})
-ax1.axis('equal')  # Equal aspect ratio ensures a circular pie
+    # Create the pie chart
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90, **{'textprops': {'fontsize': 5}})
+    ax1.axis('equal')  # Equal aspect ratio ensures a circular pie
 
-# Display the chart in Streamlit
-st.pyplot(fig1)
+    # Display the chart in Streamlit
+    st.pyplot(fig1)
 
-# Print additional information (optional)
-st.write(f'Count of each complaints:')
-for item, count in value_counts.items():
-    st.write(f"- {item}: {count}")
+    # Print additional information (optional)
+    st.write(f'Count of each complaints:')
+    for item, count in value_counts.items():
+        st.write(f"- {item}: {count}")

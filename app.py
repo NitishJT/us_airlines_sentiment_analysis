@@ -10,7 +10,7 @@ add_page_title('SENTIMENT ANALYSIS')
 show_pages(
     [
         # Page("pages/main.py", "DASHBOARD"),
-        Page("pages/page1.py", "US AIRLINES"),
+        Page("pages/page1.py", "US AIRLINES "),
         Page("pages/page2.py", "CUSTOMERS COMPLAINTS"),
     ]
 )
