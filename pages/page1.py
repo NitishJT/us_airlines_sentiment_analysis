@@ -3,7 +3,8 @@ import pandas as pd
 import numpy as np
 # from main import *
 from check import *
-st.title('SENTIMENT ANALYSIS(US AIRLINES)')
+st.title('SENTIMENT ANALYSIS')
+st.header('US AIRLINES')
 
 option = st.selectbox(
     'Select Any US Airline',
