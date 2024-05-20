@@ -11,6 +11,6 @@ show_pages(
     [
         # Page("pages/main.py", "DASHBOARD"),
         Page("pages/page1.py", "US AIRLINES "),
-        Page("pages/page2.py", "CUSTOMERS COMPLAINTS"),
+        Page("pages/page3.py", "CUSTOMER'S TWEETS"),
     ]
 )

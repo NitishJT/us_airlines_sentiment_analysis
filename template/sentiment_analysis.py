@@ -43,10 +43,10 @@ def csv(path: str):
     for tweet in tweet_list_df['text']:
         cleaned_tweet = preprocess_tweet(tweet)
         cleaned_tweets.append(cleaned_tweet)
-    tweet_list_df['cleaned'] = pd.DataFrame(cleaned_tweets)
-    tweet_list_df[['polarity', 'subjectivity']] = tweet_list_df['cleaned'].apply(
+    tweet_list_df['comments'] = pd.DataFrame(cleaned_tweets)
+    tweet_list_df[['polarity', 'subjectivity']] = tweet_list_df['comments'].apply(
         lambda Text: pd.Series(TextBlob(Text).sentiment))
-    for index, row in tweet_list_df['cleaned'].items():
+    for index, row in tweet_list_df['comments'].items():
         score = SentimentIntensityAnalyzer().polarity_scores(row)
         neg = score['neg']
         neu = score['neu']
